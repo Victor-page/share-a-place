@@ -9,8 +9,8 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist', 'assets', 'scripts'),
-    publicPath: 'dist/assets/scripts/'
+    path: path.resolve(__dirname, 'docs', 'assets', 'scripts'),
+    publicPath: 'dist/assets/scripts/',
   },
   devtool: 'cheap-source-map',
   module: {
@@ -24,13 +24,13 @@ module.exports = {
             presets: [
               [
                 '@babel/preset-env',
-                { useBuiltIns: 'usage', corejs: { version: 3 } }
-              ]
-            ]
-          }
-        }
-      }
-    ]
+                { useBuiltIns: 'usage', corejs: { version: 3 } },
+              ],
+            ],
+          },
+        },
+      },
+    ],
   },
-  plugins: [new CleanPlugin.CleanWebpackPlugin()]
+  plugins: [new CleanPlugin.CleanWebpackPlugin()],
 };
