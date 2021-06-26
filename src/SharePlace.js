@@ -40,9 +40,9 @@ class PlaceFinder {
     this.shareBtn.disabled = false;
     this.sharedLinkInputElement.value = `${
       location.origin
-    }/my-place?address=${encodeURI(address)}&lat=${coordinates[0]}&lng=${
-      coordinates[1]
-    }&type=${type}`;
+    }/share-place/my-place?address=${encodeURI(address)}&lat=${
+      coordinates[0]
+    }&lng=${coordinates[1]}&type=${type}`;
   }
 
   locateUserHandler() {
