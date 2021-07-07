@@ -10,10 +10,27 @@ class LoadedPlace {
 
 const url = new URL(location.href);
 const queryParams = url.searchParams;
-const coords = [
-  parseFloat(queryParams.get('lat')),
-  parseFloat(queryParams.get('lng')),
-];
-const address = queryParams.get('address');
-const type = queryParams.get('type');
-new LoadedPlace(coords, address, type);
+// const coords = [
+//   parseFloat(queryParams.get('lat')),
+//   parseFloat(queryParams.get('lng')),
+// ];
+// const address = queryParams.get('address');
+// const type = queryParams.get('type');
+const locId = queryParams.get('location');
+fetch('http://localhost:3000/location/' + locId)
+  .then((response) => {
+    if (response.status === 404) {
+      throw new Error("Couldn't find location!");
+    }
+    if (response.status === 500) {
+      throw new Error('Invalid id!');
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    new LoadedPlace(data.coordinates, data.address, data.type);
+  })
+  .catch((error) => {
+    alert(error.message);
+  });

@@ -37,12 +37,26 @@ class PlaceFinder {
     } else {
       this.map = new Map(coordinates, type);
     }
-    this.shareBtn.disabled = false;
-    this.sharedLinkInputElement.value = `${
-      location.origin
-    }/share-place/my-place?address=${encodeURI(address)}&lat=${
-      coordinates[0]
-    }&lng=${coordinates[1]}&type=${type}`;
+    fetch('http://localhost:3000/add-location', {
+      method: 'POST',
+      body: JSON.stringify({
+        address: address,
+        lat: coordinates[0],
+        lng: coordinates[1],
+        type: type,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const locationId = data.locId;
+        this.shareBtn.disabled = false;
+
+        this.sharedLinkInputElement.value = `${location.origin}/share-place/my-place?location=${locationId}`;
+      })
+      .catch(console.warn);
   }
 
   locateUserHandler() {
