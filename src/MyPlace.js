@@ -17,7 +17,7 @@ const queryParams = url.searchParams;
 // const address = queryParams.get('address');
 // const type = queryParams.get('type');
 const locId = queryParams.get('location');
-fetch('http://localhost:3000/location/' + locId)
+fetch('https://share-place-deployment.herokuapp.com/location/' + locId)
   .then((response) => {
     if (response.status === 404) {
       throw new Error("Couldn't find location!");

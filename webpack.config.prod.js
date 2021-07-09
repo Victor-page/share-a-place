@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist', 'assets', 'scripts'),
+    path: path.resolve(__dirname, 'docs', 'assets', 'scripts'),
     publicPath: 'dist/assets/scripts/',
   },
   devtool: 'cheap-source-map',

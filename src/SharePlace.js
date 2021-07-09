@@ -37,7 +37,7 @@ class PlaceFinder {
     } else {
       this.map = new Map(coordinates, type);
     }
-    fetch('http://localhost:3000/add-location', {
+    fetch('https://share-place-deployment.herokuapp.com/add-location', {
       method: 'POST',
       body: JSON.stringify({
         address: address,
