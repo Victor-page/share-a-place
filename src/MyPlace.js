@@ -28,7 +28,6 @@ fetch('https://share-place-deployment.herokuapp.com/location/' + locId)
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     new LoadedPlace(data.coordinates, data.address, data.type);
   })
   .catch((error) => {
